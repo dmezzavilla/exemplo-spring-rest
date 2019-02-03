@@ -15,7 +15,7 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String fabricante;
@@ -50,4 +50,12 @@ public class Produto implements Serializable {
         this.modelo = modelo;
     }
 
+    public Produto(String fabricante, String tipo, String modelo) {
+        this.fabricante = fabricante;
+        this.tipo = tipo;
+        this.modelo = modelo;
+    }
+
+    public Produto() {
+    }
 }

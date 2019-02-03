@@ -1,7 +1,7 @@
 package com.rest.controller;
 
 import com.rest.entity.Produto;
-import com.rest.repository.ProdutoRepository;
+import com.rest.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,32 +14,31 @@ import java.util.Optional;
 @RequestMapping("/")
 public class ProdutoRestController {
 
-    private final
-    ProdutoRepository produtoRepository;
+    private final ProdutoService produtoService;
 
     @Autowired
-    public ProdutoRestController(ProdutoRepository produtoRepository) {
-        this.produtoRepository = produtoRepository;
+    public ProdutoRestController(ProdutoService produtoService) {
+        this.produtoService = produtoService;
     }
 
     @GetMapping
     public Iterable<Produto> findAll() {
-        return produtoRepository.findAll();
+        return produtoService.findAll();
     }
 
-    @PostMapping(consumes = "application/json", produces = "text/plain")
-    public void save(Produto produto) {
-        produtoRepository.save(produto);
+    @PostMapping
+    public void save(@RequestBody Produto produto) {
+        produtoService.save(produto);
     }
 
     @GetMapping("/find/{id}")
     public Optional<Produto> findById(@PathVariable Long id) {
-        return produtoRepository.findById(id);
+        return produtoService.findById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
-        produtoRepository.deleteById(id);
+        produtoService.deleteById(id);
     }
 
 
