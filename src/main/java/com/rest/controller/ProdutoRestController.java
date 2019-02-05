@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Daniel Mezzavilla
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/produto")
 public class ProdutoRestController {
 
     private final ProdutoService produtoService;

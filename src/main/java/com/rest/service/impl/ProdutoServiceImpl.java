@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 @Service
 public class ProdutoServiceImpl implements ProdutoService {
 

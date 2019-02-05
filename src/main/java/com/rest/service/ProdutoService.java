@@ -4,17 +4,15 @@ import com.rest.entity.Produto;
 
 import java.util.Optional;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 public interface ProdutoService {
+    Iterable<Produto> findAll();
 
+    void save(Produto produto);
 
-    public Iterable<Produto> findAll();
+    Optional<Produto> findById(Long id);
 
-
-    public void save(Produto produto);
-
-
-    public Optional<Produto> findById(Long id);
-
-
-    public void deleteById(Long id);
+    void deleteById(Long id);
 }
