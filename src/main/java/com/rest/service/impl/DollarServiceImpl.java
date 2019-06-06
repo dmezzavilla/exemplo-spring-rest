@@ -27,12 +27,14 @@ public class DollarServiceImpl implements DollarService {
     public void saveAll() {
         RestTemplate restTemplate = new RestTemplate();
 
+        /* Para pegar a cotação de mais dias, alterar o valor numérico em '1?formato=json' da url*/
         ResponseEntity<Iterable<Dollar>> response = restTemplate.exchange(
-                "https://economia.awesomeapi.com.br/json/USD-BRL",
+                "https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados/ultimos/10?formato=json",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Iterable<Dollar>>() {
                 });
+
         Iterable<Dollar> cotacaoDollar = response.getBody();
 
         dollarRepository.saveAll(cotacaoDollar);
